@@ -1,5 +1,6 @@
+cd mysql/
 docker compose down
+cd ..
 
-cd api
-
+cd api/
 docker compose down
