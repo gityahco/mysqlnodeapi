@@ -1,0 +1,37 @@
+version: '3.8'
+networks:
+  network1:
+    name: testmysql_default
+services:
+  mysql-container:
+    container_name: mysqldb
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: mydb
+      MYSQL_USER: yahya
+      MYSQL_PASSWORD: yahya
+    # healthcheck:
+    #   test: ["CMD", "check-script.sh"]
+    networks:
+      - network1
+  # node-api-container:
+  #   container_name: nodeapi
+  #   build:
+  #     context: ./api
+  #     dockerfile: Dockerfile
+  #   depends_on:
+  #   - mysql-container
+  #   # restart: unless-stopped
+  #   ports:
+  #     - "3000:3000"
+  #   networks:
+  #     - network1
+  #   healthcheck:
+  #     test: ["CMD", "curl", "-f", "http://localhost:3000/users"]
+  #     interval: 10s
+  #     timeout: 5s
+  #     retries: 3
+  #   restart: on-failure

@@ -1,0 +1,15 @@
+version: '3.8'
+networks:
+  network1:
+    name: testmysql_default
+    external: true
+services:
+  node-api-container:
+    container_name: nodeapi
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    networks:
+      - network1
